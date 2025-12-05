@@ -1,0 +1,7 @@
+th,td {white-space: nowrap;}
+
+body{background-color: rgb(255, 255, 255);}
+
+th.white-space-normal,td.white-space-normal {white-space: normal !important;}
+
+

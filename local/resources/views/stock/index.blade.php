@@ -14,10 +14,10 @@
             <span class="input-group-text bg-white">
                 <i class="fas fa-filter text-muted"></i>
             </span>
-            <select name="category" id="category" class="form-select" onchange="search(1)">
+            <select name="category" id="category" class="form-select">
                 <option value="">All Categories</option>
                 @foreach($categories as $c)
-                    <option value="{{ $c->id }}">
+                    <option value="{{ $c->id }}" {{ $category == $c->id ? 'selected' : '' }}>
                         {{ $c->name }}
                     </option>
                 @endforeach
@@ -27,12 +27,13 @@
         <button type="reset" class="btn btn-outline-secondary px-3" onclick="search(1)">Reset</button>
     </form>
 </div>
+
 <div class="card">
     <div class="card-body p-0">
         <div class="table-responsive search-results">
-            @include('items.datatable',$items)
+            @include('stock.datatable',$items)
         </div>
     </div>
 </div>
 @endsection
-@include('items.scripts')
+@include('stock.scripts')

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\StockImportController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +31,22 @@ Route::get('/', function () {
         return view('items_import');
     });
         
-        Route::post('/items/import', [ItemImportController::class, 'importItems'])
+    Route::post('/items/import', [ItemImportController::class, 'importItems'])
         ->name('items.import');
+
+        
+    Route::get('/stock/import', function() {
+        return view('stock.import');
+    })->name('stock.import.form');
+        
+    Route::post('/stock/import', [StockImportController::class, 'import'])->name('stock.import');
+    
+    Route::get('/stocks', [StockController::class, 'index'])->name('stocks.index');
+    
+    Route::get('/stock-detail-report/{stock_id}', [StockController::class, 'stockDetails']);
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    Route::get('/stock-report', [DashboardController::class, 'stockReport']);
+    
+        

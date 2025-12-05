@@ -5,73 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOH Application</title>
 
-    <!-- Bootstrap 5.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 CSS -->
+    <link rel="stylesheet" href="{{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/app.css') }}">
 
-    <style>
-        body {
-            overflow-x: hidden;
-        }
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: #0d6efd;
-            padding-top: 60px;
-        }
-        .sidebar a {
-            padding: 12px 20px;
-            display: block;
-            color: #fff;
-            text-decoration: none;
-        }
-        .sidebar a:hover {
-            background: rgba(255,255,255,0.2);
-        }
+    <!-- jQuery MUST LOAD FIRST -->
+    <script src="{{ url('assets/jquery/jquery.min.js') }}"></script>
 
-        .content {
-            margin-left: 250px;
-            padding: 25px;
-        }
-
-        .top-nav {
-            position: fixed;
-            left: 250px;
-            right: 0;
-            height: 60px;
-            background: #fff;
-            border-bottom: 1px solid #ddd;
-            padding: 15px;
-        }
-    </style>
+    <!-- tableHeadFixer plugin -->
+    <script src="{{ url('assets/vendor/tableHeadFixer.js') }}"></script>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SOH System</a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h5 class="text-center text-white">SOH System</h5>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <a href="{{ url('/dashboard') }}">Dashboard</a>
-        <a href="{{ url('/items') }}">Items</a>
-        <a href="{{ url('/districts') }}">Districts</a>
-        <a href="{{ url('/stock-updates') }}">Stock Updates</a>
-        <a href="{{ url('/reports') }}">Reports</a>
-        <a href="{{ url('/settings') }}">Settings</a>
-    </div>
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
 
-    <!-- Top Navbar -->
-    <div class="top-nav d-flex justify-content-end align-items-center px-3">
-        <strong>Welcome, Admin</strong>
-    </div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Dashboard
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/stock-report') }}">Stock Report</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Stacks
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url('/stocks') }}">Stocks</a></li>
+                            <li><a class="dropdown-item" href="{{ route('stock.import.form') }}">Stock Import</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Items List
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url('/items') }}">Items</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/items-upload') }}">Items Import</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- Main Content -->
-    <div class="content pt-4">
+    <div class="container-fluid p-3">
         @yield('content')
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Modal -->
+    <div class="modal confirm-modal fade" id="dashboard_modal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" id="dashboard_content"></div>
+        </div>
+    </div>
+
+    <!-- Your General Scripts -->
+    <script>
+        function dashboardPopup(url) {
+            $("#preloader").show();
+            $("#dashboard_content").html('');
+
+            $("#dashboard_content").load(url, function () {
+                setTimeout(function () {
+                    $("#preloader").hide();
+                    $("#dashboard_modal").modal('show');
+                }, 500);
+            });
+        }
+    </script>
+
+    <!-- Bootstrap JS (correct path) -->
+    <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Page Specific Scripts -->
+    @stack('scripts')
+
 </body>
 </html>
