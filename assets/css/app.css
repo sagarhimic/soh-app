@@ -5,3 +5,28 @@ body{background-color: rgb(255, 255, 255);}
 th.white-space-normal,td.white-space-normal {white-space: normal !important;}
 
 
+.pagination{margin:0 !important;}
+th, td {font-size: 14px;}
+
+
+.nav-height{height: 60px !important;}
+
+.page-header-height{height: 90px !important;overflow: hidden !important;}
+
+.pagination-height{height: 30px !important; overflow: hidden !important;}
+
+.table-responsive{max-height: calc(100vh - 230px);}
+
+.pagination .page-item .page-link{min-width: 28px;
+    height: 28px;
+    line-height: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+    
+    .pagination-height nav{width: 100%;}
+    .pagination-height .d-sm-flex{justify-content: space-between !important;width: 100%;}
+     .pagination-height .d-sm-flex div:first-child p{margin:0 !important;}

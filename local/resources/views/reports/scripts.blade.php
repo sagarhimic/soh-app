@@ -11,6 +11,9 @@ function filters() {
 }
 
 function search(page) {
+	
+	queryRemove();
+	
 	$.ajax({
 		url: "{{ url('/stock-report') }}?page=" + page,
 		type: "GET",

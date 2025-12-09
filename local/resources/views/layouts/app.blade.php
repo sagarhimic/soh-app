@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark nav-height" aria-label="Third navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">SOH System</a>
 
@@ -78,23 +78,43 @@
     </div>
 
     <!-- Your General Scripts -->
-    <script>
-        function dashboardPopup(url) {
-            $("#preloader").show();
-            $("#dashboard_content").html('');
-
-            $("#dashboard_content").load(url, function () {
-                setTimeout(function () {
-                    $("#preloader").hide();
-                    $("#dashboard_modal").modal('show');
-                }, 500);
-            });
-        }
-    </script>
-
+    
     <!-- Bootstrap JS (correct path) -->
     <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+<script>
+function dashboardPopup(url) {
+    $("#preloader").show();
+    $("#dashboard_content").html('');
+
+    $("#dashboard_content").load(url, function () {
+        setTimeout(function () {
+            $("#preloader").hide();
+            $("#dashboard_modal").modal('show');
+        }, 500);
+    });
+}
+   
+
+function queryRemove() {
+			var uri = window.location.toString();
+			if ( uri.indexOf( "?" ) > 0 ) {
+				var clean_uri = uri.substring( 0, uri.indexOf( "?" ) );
+				window.history.replaceState( {}, document.title, clean_uri );
+			}
+
+			/* 	if (window.location.href.match(/filterby=/) || window.location.href.match(/page=/)){
+				    if (typeof (history.pushState) != "undefined") {
+				        var obj = { Title: document.title, Url: window.location.pathname };
+				        history.pushState(obj, obj.Title, obj.Url);
+				    } else {
+				        window.location = window.location.pathname;
+				    }
+				} */
+		}
+
+
+</script>
     <!-- Page Specific Scripts -->
     @stack('scripts')
 

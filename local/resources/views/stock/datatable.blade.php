@@ -1,4 +1,6 @@
- <table class="table align-middle">
+<input type="hidden" name="curpage" id="curpage" value="{{ $items->currentPage() }}">
+<div class="table-responsive">
+<table class="table table-bordered table-hover align-middle" id="fixTable">
     			<thead class="table-dark">
                     <tr>
                     	<th>#</th>
@@ -91,7 +93,7 @@
                         $item->Siddipet;
                 @endphp
                 		<td>{{ $loop->iteration + $skipped }}</td>
-                        <td class="white-space-normal" style="max-width:400px;">{{ $item->item->name }}</td>
+                        <td class="white-space-normal" style="max-width:400px;"><a href="#">{{ $item->item->name }}</a></td>
                         <td>{{ $item->item->categoryType->name }}</td>
                         <td>{{ format_date($item->date) }}</td>
                         <td>{{ $item->Adilabad }}</td>
@@ -141,6 +143,10 @@
                     @endforelse
                     </tbody>
            </table>
-         <div class="mt-4 d-flex justify-content-center">
-                        {{ $items->links('pagination::bootstrap-5') }}
-                    </div> 
+</div>
+           <div class="mt-3 d-flex justify-content-center pagination-height">
+            {{ $items->links('pagination::bootstrap-5') }}
+    </div>
+<script>
+ $("#fixTable").tableHeadFixer({ head: true, left: 2 });
+</script>

@@ -7,6 +7,9 @@ function filters() {
 }
 
 function search(page) {
+	
+	queryRemove();
+	
 	$.ajax({
 		url: "{{ url('/items') }}?page=" + page,
 		type: "GET",
