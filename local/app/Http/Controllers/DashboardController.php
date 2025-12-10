@@ -88,12 +88,12 @@ class DashboardController extends Controller
     
     public function stockReport(Request $request)
     {
-        $search        = $request->search_key;
-        $category      = $request->category;
-        $minMonths     = $request->min_months ?? '';
-        $totminMonths  = $request->tot_min_months ?? '';
-        $filterDate    = $request->filter_date ?? null;
-        $perPage       = $request->per_page ?? 100;
+        $search           = $request->search_key;
+        $category         = $request->category;
+        $minMonths        = $request->min_months ?? '';
+        $totminMonths     = $request->tot_min_months ?? '';
+        $filterDate       = $request->filter_date ?? null;
+        $perPage          = $request->per_page ?? 100;
         
         // Build query
         $query = StockUpdate::with(['item.categoryType']);
@@ -213,6 +213,8 @@ class DashboardController extends Controller
             
             $categories = CategoryType::orderBy('name')->get();
             
+            $districts = StockUpdate::districtColumns();
+            
             if ($request->ajax()) {
                 return view('reports.datatable', compact('items'));
             }
@@ -223,6 +225,7 @@ class DashboardController extends Controller
                 'search',
                 'category',
                 'minMonths',
+                'districts',
                 'totminMonths',
                 'filterDate'
                 ));

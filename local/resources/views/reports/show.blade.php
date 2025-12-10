@@ -9,7 +9,7 @@
     <div class="flex-row" >		
 
 	<div class="table-responsive" style="max-height:500px;">
-    <table class="table align-items-center table-flush border" id="fixTable">
+    <table class="table table-bordered table-hover align-middle" id="showfixTable">
 				<thead class="thead-light">
 					<tr>
 						<th>#</th>
@@ -55,43 +55,43 @@
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ format_date($item->date) }}</td>
-                        <td>{{ $item->Adilabad }}</td>
-                        <td>{{ $item->Komuram_Bheem_Asifabad }}</td>
-                        <td>{{ $item->Mancherial }}</td>
-                        <td>{{ $item->Nirmal }}</td>
-                        <td>{{ $item->Khammam }}</td>
-                        <td>{{ $item->Bhadradri_Kothagudem }}</td>
-                        <td>{{ $item->Hanumakonda }}</td>
-                        <td>{{ $item->Jangaon }}</td>
-                        <td>{{ $item->Jayashankar_Bhupalpally }}</td>
-                        <td>{{ $item->Mahabubabad }}</td>
-                        <td>{{ $item->Mulugu }}</td>
-                        <td>{{ $item->Warangal }}</td>
-                        <td>{{ $item->Hyderabad }}</td>
-                        <td>{{ $item->Medchal_Malkajgiri }}</td>
-                        <td>{{ $item->Nizamabad }}</td>
-                        <td>{{ $item->Kamareddy }}</td>
-                        <td>{{ $item->Karimnagar }}</td>
-                        <td>{{ $item->Peddapalli }}</td>
-                        <td>{{ $item->Rajanna_Sircilla }}</td>
-                        <td>{{ $item->Jagtial }}</td>
-                        <td>{{ $item->Mahabubnagar }}</td>
-                        <td>{{ $item->Narayanpet }}</td>
-                        <td>{{ $item->Jogulamba_Gadwal }}</td>
-                        <td>{{ $item->Nagarkurnool }}</td>
-                        <td>{{ $item->Wanaparthy }}</td>
-                        <td>{{ $item->Nalgonda }}</td>
-                        <td>{{ $item->Suryapet }}</td>
-                        <td>{{ $item->Yadadri_Bhongir }}</td>
-                        <td>{{ $item->Ranga_Reddy }}</td>
-                        <td>{{ $item->Vikarabad }}</td>
-                        <td>{{ $item->Sangareddy }}</td>
-                        <td>{{ $item->Medak }}</td>
-                        <td>{{ $item->Siddipet }}</td>
+                        <td class="fw-bold {{ $item->Adilabad <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Adilabad,2) }}</td>
+                        <td class="fw-bold {{ $item->Komuram_Bheem_Asifabad <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Komuram_Bheem_Asifabad,2) }}</td>
+                        <td class="fw-bold {{ $item->Mancherial <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Mancherial,2) }}</td>
+                        <td class="fw-bold {{ $item->Nirmal <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Nirmal,2) }}</td>
+                        <td class="fw-bold {{ $item->Khammam <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Khammam,2) }}</td>
+                        <td class="fw-bold {{ $item->Bhadradri_Kothagudem <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Bhadradri_Kothagudem,2) }}</td>
+                        <td class="fw-bold {{ $item->Hanumakonda <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Hanumakonda,2) }}</td>
+                        <td class="fw-bold {{ $item->Jangaon <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Jangaon,2) }}</td>
+                        <td class="fw-bold {{ $item->Jayashankar_Bhupalpally <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Jayashankar_Bhupalpally,2) }}</td>
+                        <td class="fw-bold {{ $item->Mahabubabad <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Mahabubabad,2) }}</td>
+                        <td class="fw-bold {{ $item->Mulugu <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Mulugu,2) }}</td>
+                        <td class="fw-bold {{ $item->Warangal <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Warangal,2) }}</td>
+                        <td class="fw-bold {{ $item->Hyderabad <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Hyderabad,2) }}</td>
+                        <td class="fw-bold {{ $item->Medchal_Malkajgiri <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Medchal_Malkajgiri,2) }}</td>
+                        <td class="fw-bold {{ $item->Nizamabad <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Nizamabad,2) }}</td>
+                        <td class="fw-bold {{ $item->Kamareddy <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Kamareddy,2) }}</td>
+                        <td class="fw-bold {{ $item->Karimnagar <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Karimnagar,2) }}</td>
+                        <td class="fw-bold {{ $item->Peddapalli <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Peddapalli,2) }}</td>
+                        <td class="fw-bold {{ $item->Rajanna_Sircilla <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Rajanna_Sircilla,2) }}</td>
+                        <td class="fw-bold {{ $item->Jagtial <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Jagtial,2) }}</td>
+                        <td class="fw-bold {{ $item->Mahabubnagar <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Mahabubnagar,2) }}</td>
+                        <td class="fw-bold {{ $item->Narayanpet <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Narayanpet,2) }}</td>
+                        <td class="fw-bold {{ $item->Jogulamba_Gadwal <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Jogulamba_Gadwal,2) }}</td>
+                        <td class="fw-bold {{ $item->Nagarkurnool <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Nagarkurnool,2) }}</td>
+                        <td class="fw-bold {{ $item->Wanaparthy <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Wanaparthy,2) }}</td>
+                        <td class="fw-bold {{ $item->Nalgonda <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Nalgonda,2) }}</td>
+                        <td class="fw-bold {{ $item->Suryapet <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Suryapet,2) }}</td>
+                        <td class="fw-bold {{ $item->Yadadri_Bhongir <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Yadadri_Bhongir,2) }}</td>
+                        <td class="fw-bold {{ $item->Ranga_Reddy <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Ranga_Reddy,2) }}</td>
+                        <td class="fw-bold {{ $item->Vikarabad <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Vikarabad,2) }}</td>
+                        <td class="fw-bold {{ $item->Sangareddy <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Sangareddy,2) }}</td>
+                        <td class="fw-bold {{ $item->Medak <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Medak,2) }}</td>
+                        <td class="fw-bold {{ $item->Siddipet <= 0 ? 'text-danger' : 'text-success' }}">{{ number_format($item->Siddipet,2) }}</td>
 					</tr>
 				@endforeach
 				@else
-				<tr><td colspan="15" class="text-center">No records found.</td></tr>
+				<tr><td colspan="35" class="text-center">No records found.</td></tr>
 				@endif 
 				</tbody>
 			</table>
@@ -100,6 +100,6 @@
 </div>
 <script>
 $(document).ready(function() {
-	$("#fixTable").tableHeadFixer({"left" : 3});
+	$("#showfixTable").tableHeadFixer({"left" : 2});
 });
 </script>
