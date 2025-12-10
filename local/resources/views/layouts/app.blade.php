@@ -15,7 +15,20 @@
     <!-- tableHeadFixer plugin -->
     <script src="{{ url('assets/vendor/tableHeadFixer.js') }}"></script>
 </head>
-
+<style>
+    #globalLoader {
+        display: none;
+    }
+    .loader-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.7);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark nav-height" aria-label="Third navbar example">
         <div class="container-fluid">
@@ -66,6 +79,13 @@
 
     <!-- Main Content -->
     <div class="container-fluid p-3">
+         <div id="globalLoader">
+            <div class="loader-overlay">
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
         @yield('content')
     </div>
 
@@ -112,7 +132,26 @@ function queryRemove() {
 				    }
 				} */
 		}
+		
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // For all form submissions
+    document.querySelectorAll("form").forEach(form => {
+        form.addEventListener("submit", function() {
+            document.getElementById("globalLoader").style.display = "block";
+        });
+    });
 
+    // For all AJAX requests
+    $(document).ajaxStart(function() {
+        $("#globalLoader").show();
+    });
+
+    $(document).ajaxStop(function() {
+        $("#globalLoader").hide();
+    });
+
+});
 
 </script>
     <!-- Page Specific Scripts -->
