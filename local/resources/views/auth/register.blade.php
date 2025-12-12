@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="icon" href="{{ url('assets/img/favicon.ico') }}" type="image/png">
 
     <style>
         body {

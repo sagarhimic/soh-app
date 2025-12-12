@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SOH Application</title>
+    <title>@yield('title')</title>
+    <!-- FAVICON -->
+    <link rel="icon" href="{{ url('assets/img/favicon.ico') }}" type="image/png">
 
     <!-- Bootstrap 5.3 CSS -->
     <link rel="stylesheet" href="{{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
