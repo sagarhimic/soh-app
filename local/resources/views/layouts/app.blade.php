@@ -75,13 +75,14 @@
                 </ul>
             </div>
         </div>
-    </nav>
-    <div>
+        <div>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit">Logout</button>
     	</form>
 	</div>
+    </nav>
+    
 
     <!-- Main Content -->
     <div class="container-fluid p-3">

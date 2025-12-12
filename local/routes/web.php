@@ -30,37 +30,43 @@ use App\Http\Controllers\AuthController;
     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
     
+    // ------------------------------
+    // Protected Management Routes
+    // ------------------------------
     Route::group(['middleware' => ['Managementlogin']], function () {
         
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         
-        Route::get('/dashboard/items', [DashboardController::class,'items']);
-        Route::get('/dashboard/items/{item}', [DashboardController::class,'itemDetail']);
+        Route::get('/dashboard/items', [DashboardController::class, 'items']);
+        
+        Route::get('/dashboard/items/{item}', [DashboardController::class, 'itemDetail']);
         
         Route::get('/items', [ItemController::class, 'index'])->name('items.index');
-            
+        
         Route::get('/items-upload', function () {
             return view('items_import');
         });
             
-        Route::post('/items/import', [ItemImportController::class, 'importItems'])
-        ->name('items.import');
+            Route::post('/items/import', [ItemImportController::class, 'importItems'])->name('items.import');
             
-        Route::get('/stock/import', function() {
-            return view('stock.import');
-        })->name('stock.import.form');
+            Route::get('/stock/import', function() {
+                return view('stock.import');
+            })->name('stock.import.form');
             
-        Route::post('/stock/import', [StockImportController::class, 'import'])->name('stock.import');
-        
-        Route::get('/stocks', [StockController::class, 'index'])->name('stocks.index');
-        
-        Route::get('/stock-detail-report/{stock_id}', [StockController::class, 'stockDetails']);
-        
-        Route::get('/stock-report', [DashboardController::class, 'stockReport']);
-        
-        Route::post('/', [AuthController::class, 'logout'])->name('logout');
-    
+            Route::post('/stock/import', [StockImportController::class, 'import'])->name('stock.import');
+            
+            Route::get('/stocks', [StockController::class, 'index'])->name('stocks.index');
+            
+            Route::get('/stock-detail-report/{stock_id}', [StockController::class, 'stockDetails']);
+            
+            Route::get('/stock-report', [DashboardController::class, 'stockReport']);
     });
+        
+        // ------------------------------
+        // Logout Route (MUST be outside)
+        // ------------------------------
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+        
     
     
 

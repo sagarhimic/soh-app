@@ -9,6 +9,11 @@ use App\Models\Item;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Managementlogin');
+    }
+    
     public function index(Request $request)
     {
         $filterDate = $request->filter_date ?? date('Y-m-d');
