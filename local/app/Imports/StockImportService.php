@@ -43,7 +43,8 @@ class StockImportService
         'Siddipet',
         'quarantine_stock',
         'pending_supply',
-        'consumption'
+        'consumption',
+        'consumption_type_id'
     ];
 
     /**
@@ -65,7 +66,7 @@ class StockImportService
     public function processRow($row, $header, $importDate)
     {
         // 1. Item code is first column
-        $itemCode = trim($row[6] ?? '');
+        $itemCode = trim($row[2] ?? '');
 
         if (!$itemCode) {
             return;

@@ -5,6 +5,7 @@ class StockUpdate extends Model
 {
     protected $fillable = [
         'item_id',
+        'consumption_type_id',
         'date',
         'Adilabad',
         'Komuram_Bheem_Asifabad',
